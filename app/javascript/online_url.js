@@ -6,10 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   online.addEventListener('click', (e)=>{
       if(e.target.checked){
           url.style.display = 'block';
-          prefecture.style.display = 'none';
+          prefecture.options[47].selected = true;
       } else {
           url.style.display = 'none';
-          prefecture.style.display = 'block';
       }
   }, false);
+  if(online.checked){
+    url.style.display = 'block';
+  };
 })
