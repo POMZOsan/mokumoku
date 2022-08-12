@@ -26,14 +26,9 @@ class EventMailer < ApplicationMailer
   end
 
   def notify_event_url
-    @events = Event.online_today
-    @events.each do |event|
-      @event = event
-      @event_url = event.event_url
-      users = event.attendees
-        users.each do | user|
-          mail(to: user.email, subject: "本日は#{@event.title}の開催日です")
-        end
-    end
+    @users = params[:users]
+    @event = params[:event]
+    @event_url = params[:event_url]
+    mail(to: @users.pluck(:email), subject: "本日は#{@event.title}の開催日です")
   end
 end
