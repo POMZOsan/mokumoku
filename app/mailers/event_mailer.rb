@@ -29,6 +29,6 @@ class EventMailer < ApplicationMailer
     @users = params[:users]
     @event = params[:event]
     @event_url = params[:event_url]
-    mail(to: @users.pluck(:email), subject: "本日は#{@event.title}の開催日です")
+    mail(bcc: @users.pluck(:email), subject: "本日は#{@event.title}の開催日です")
   end
 end
