@@ -11,8 +11,11 @@ class Event < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_one_attached :thumbnail
 
+  enum place: { offline: 0, online: 1 }
+
   scope :future, -> { where('held_at > ?', Time.current) }
   scope :past, -> { where('held_at <= ?', Time.current) }
+  scope :online_today, -> { online.where(held_at: Date.today.all_day) }
 
   with_options presence: true do
     validates :title

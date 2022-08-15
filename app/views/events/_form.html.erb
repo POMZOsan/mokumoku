@@ -13,8 +13,16 @@
     <%= f.datetime_field :held_at, class: 'form-control' %>
   </div>
   <div class="mb-3">
+    <%= f.label :place, 'Online' %>
+    <%= f.check_box :place, { id: 'online'}, 'online', 'offline' %>
+  </div>
+  <div class="mb-3" id="url">
+    <%= f.label :event_url %>
+    <%= f.text_field :event_url, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
     <%= f.label :prefecture_id %>
-    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: 'form-select' %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: 'form-select', id: 'prefecture' %>
   </div>
   <div class="mb-3">
     <%= f.label :thumbnail %>

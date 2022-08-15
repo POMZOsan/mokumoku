@@ -81,6 +81,16 @@
           <h4 class="text-center">
             <%= l @event.held_at, format: :short %>
           </h4>
+          <% if @event.online? %>
+            <% if current_user.owner?(@event) || current_user.attend?(@event) %>
+              <h3 class="text-center">
+                会場URL
+              </h3>
+              <h4 class="text-center">
+                <%= link_to @event.event_url, target: '_blank', rel: 'noopener' %>
+              </h4>
+            <% end %>
+          <% end %>
           <hr />
           <div class="text-center">
             <% if logged_in? %>
